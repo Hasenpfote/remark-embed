@@ -1,0 +1,53 @@
+{
+  "name": "remark-embed",
+  "version": "0.1.0",
+  "description": "My Library",
+  "main": "dist/index.js",
+  "module": "dist/index.mjs",
+  "types": "dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "tsup",
+    "dev": "tsup --watch",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "biome:check": "biome check ./src",
+    "biome:check:fix": "biome check --write ./src",
+    "biome:lint": "biome lint ./src",
+    "biome:lint:fix": "biome lint --write ./src",
+    "biome:format": "biome format ./src",
+    "biome:format:fix": "biome format --write ./src",
+    "biome:ci": "biome ci ./src"
+  },
+  "keywords": [
+    "typescript",
+    "library"
+  ],
+  "author": "Hasenpfote",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Hasenpfote/remark-embed"
+  },
+  "bugs": {
+    "url": "https://github.com/Hasenpfote/remark-embed/issues"
+  },
+  "homepage": "https://github.com/Hasenpfote/remark-embed#readme",
+  "devDependencies": {
+    "@biomejs/biome": "1.9.4",
+    "rehype-stringify": "^10.0.1",
+    "remark-parse": "^11.0.0",
+    "remark-rehype": "^11.1.1",
+    "tsup": "^8.4.0",
+    "typescript": "^5.8.2",
+    "unified": "^11.0.5",
+    "vitest": "^3.0.9"
+  },
+  "dependencies": {
+    "@fastify/deepmerge": "^3.0.0",
+    "hastscript": "^9.0.1",
+    "unist-util-visit": "^5.0.0"
+  }
+}
