@@ -25,7 +25,6 @@ test.each(testCases)(
   'Test: $name',
   async ({ name, input, options, expected }) => {
     const result = await parse(input, options)
-    console.log(result)
     expect(result).toBe(expected)
   },
 )
