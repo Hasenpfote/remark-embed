@@ -5,12 +5,11 @@
   "main": "dist/index.js",
   "module": "dist/index.mjs",
   "types": "dist/index.d.ts",
-  "files": [
-    "dist"
-  ],
+  "files": ["dist"],
   "scripts": {
     "build": "tsup",
     "dev": "tsup --watch",
+    "prepare": "npm run build",
     "test": "vitest run",
     "test:watch": "vitest",
     "biome:check": "biome check ./src",
@@ -21,10 +20,7 @@
     "biome:format:fix": "biome format --write ./src",
     "biome:ci": "biome ci ./src"
   },
-  "keywords": [
-    "typescript",
-    "library"
-  ],
+  "keywords": ["typescript", "library"],
   "author": "Hasenpfote",
   "license": "MIT",
   "repository": {
