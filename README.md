@@ -105,6 +105,8 @@ HTML:
 
 ### Multiple Sites with Captions
 
+When you include only links within a paragraph, they will be grouped together. Hard or soft breaks can also be used.
+
 Markdown:
 
 ```markdown
@@ -151,6 +153,8 @@ HTML:
 ```
 
 ### Multiple Sites with Shared Caption
+
+When you include only links within a paragraph, they will be grouped together. Hard or soft breaks can also be used.
 
 Markdown:
 
