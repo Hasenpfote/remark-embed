@@ -32,7 +32,7 @@ const defaultOptions: Options = {
   sources: [],
 }
 
-const remarkEmbed: Plugin<[UserOptions], Root> = (options?: UserOptions) => {
+const remarkEmbed: Plugin<[UserOptions?], Root> = options => {
   const mergedOptions = deepmerge()(defaultOptions, options ?? {}) as Options
 
   const transformer: Transformer<Root> = async tree => {
