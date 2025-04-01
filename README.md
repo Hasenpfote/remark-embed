@@ -69,13 +69,7 @@ Running that yields:
 </figure>
 ```
 
-### Single Site with Caption
-
-Markdown:
-
-```markdown
-[](https://www.youtube.com/watch?v=exampleID "A title")
-```
+### Single Site
 
 Options:
 
@@ -88,6 +82,14 @@ const options = {
     },
   ],
 }
+```
+
+#### With Caption
+
+Markdown:
+
+```markdown
+[](https://www.youtube.com/watch?v=exampleID "A title")
 ```
 
 HTML:
@@ -103,16 +105,27 @@ HTML:
 </figure>
 ```
 
-### Multiple Sites with Captions
-
-When you include only links within a paragraph, they will be grouped together. Hard or soft breaks can also be used.
+#### Without Caption
 
 Markdown:
 
 ```markdown
-[](https://www.youtube.com/watch?v=exampleID "Title 1")  
-[](https://www.bilibili.com/video/exampleID "Title 2")
+[](https://www.youtube.com/watch?v=exampleID)
 ```
+
+HTML:
+
+```html
+<figure class="embed">
+  <div>
+    <iframe src="https://www.youtube.com/embed/exampleID"></iframe>
+  </div>
+</figure>
+```
+
+### Multiple Sites
+
+When you include only links within a paragraph, they will be grouped together. Hard or soft breaks can also be used.
 
 Options:
 
@@ -135,6 +148,15 @@ const options = {
 }
 ```
 
+#### With Caption
+
+Markdown:
+
+```markdown
+[](https://www.youtube.com/watch?v=exampleID "Title 1")  
+[](https://www.bilibili.com/video/exampleID "Title 2")
+```
+
 HTML:
 
 ```html
@@ -152,17 +174,29 @@ HTML:
 </figure>
 ```
 
-### Multiple Sites with Shared Caption
-
-When you include only links within a paragraph, they will be grouped together. Hard or soft breaks can also be used.
+#### Without Caption
 
 Markdown:
 
 ```markdown
-[](https://www.youtube.com/watch?v=exampleID "This becomes the caption")  
-[](https://www.desmos.com/calculator/exampleID1)  
-[](https://www.desmos.com/calculator/exampleID2)
+[](https://www.youtube.com/watch?v=exampleID)  
+[](https://www.bilibili.com/video/exampleID)
 ```
+
+HTML:
+
+```html
+<figure class="embed">
+  <div>
+    <iframe src="https://www.youtube.com/embed/exampleID"></iframe>
+    <iframe src="//player.bilibili.com/player.html?bvid=exampleID&p=1"></iframe>
+  </div>
+</figure>
+```
+
+### Multiple Sites with Shared Caption
+
+When you include only links within a paragraph, they will be grouped together. Hard or soft breaks can also be used.
 
 Options:
 
@@ -181,6 +215,14 @@ const options = {
     },
   ],
 }
+```
+
+Markdown:
+
+```markdown
+[](https://www.youtube.com/watch?v=exampleID "This becomes the caption")  
+[](https://www.desmos.com/calculator/exampleID1)  
+[](https://www.desmos.com/calculator/exampleID2)
 ```
 
 HTML:
