@@ -59,7 +59,7 @@ const options = {
 Running that yields:
 
 ```html
-<figure class="embed">
+<figure>
   <div>
     <figure>
       <iframe src="https://www.youtube.com/embed/exampleID"></iframe>
@@ -95,7 +95,7 @@ Markdown:
 HTML:
 
 ```html
-<figure class="embed">
+<figure>
   <div>
     <figure>
       <iframe src="https://www.youtube.com/embed/exampleID"></iframe>
@@ -116,7 +116,7 @@ Markdown:
 HTML:
 
 ```html
-<figure class="embed">
+<figure>
   <div>
     <iframe src="https://www.youtube.com/embed/exampleID"></iframe>
   </div>
@@ -160,7 +160,7 @@ Markdown:
 HTML:
 
 ```html
-<figure class="embed">
+<figure>
   <div>
     <figure>
       <iframe src="https://www.youtube.com/embed/exampleID"></iframe>
@@ -186,7 +186,7 @@ Markdown:
 HTML:
 
 ```html
-<figure class="embed">
+<figure>
   <div>
     <iframe src="https://www.youtube.com/embed/exampleID"></iframe>
     <iframe src="//player.bilibili.com/player.html?bvid=exampleID&p=1"></iframe>
@@ -228,7 +228,7 @@ Markdown:
 HTML:
 
 ```html
-<figure class="embed">
+<figure>
   <div>
     <iframe src="https://www.youtube.com/embed/exampleID"></iframe>
     <iframe src="https://www.desmos.com/calculator/exampleID1?embed="></iframe>
@@ -244,9 +244,10 @@ The default export is `remarkEmbed`.
 
 ### Options
 
-| Name    | Type     | Default | Description                               |
-| ------- | -------- | ------- | ----------------------------------------- |
-| sources | Source[] | []      | An array of Source objects for embedding. |
+| Name      | Type     | Default | Description                                              |
+| --------- | -------- | ------- | -------------------------------------------------------- |
+| className | string   | ""      | The class name to apply to the outer `<figure>` element. |
+| sources   | Source[] | []      | An array of Source objects for embedding.                |
 
 #### Source
 

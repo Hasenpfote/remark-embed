@@ -11,7 +11,7 @@ export default [
       ],
     },
     expected:
-      '<figure class="embed"><div><iframe src="https://example.com/embed/exampleID"></iframe></div></figure>',
+      '<figure><div><iframe src="https://example.com/embed/exampleID"></iframe></div></figure>',
   },
   {
     name: 'Combination: contentUrl + queryParams',
@@ -27,7 +27,7 @@ export default [
       ],
     },
     expected:
-      '<figure class="embed"><div><iframe src="https://example.com/calculator/exampleID?embed="></iframe></div></figure>',
+      '<figure><div><iframe src="https://example.com/calculator/exampleID?embed="></iframe></div></figure>',
   },
   {
     name: 'Combination: contentUrl + embedUrl + queryParams',
@@ -47,7 +47,7 @@ export default [
       ],
     },
     expected:
-      '<figure class="embed"><div><iframe src="//player.example.com/player.html?poster=1&#x26;autoplay=0&#x26;bvid=exampleID&#x26;p=1"></iframe></div></figure>',
+      '<figure><div><iframe src="//player.example.com/player.html?poster=1&#x26;autoplay=0&#x26;bvid=exampleID&#x26;p=1"></iframe></div></figure>',
   },
   {
     name: 'Combination: contentUrl + embedUrl + queryParams + iframeAttributes',
@@ -71,7 +71,7 @@ export default [
       ],
     },
     expected:
-      '<figure class="embed"><div><iframe src="https://example.com/embed/exampleID?gui=true&#x26;t=10&#x26;paused=true&#x26;muted=false" loading="lazy" allow="fullscreen"></iframe></div></figure>',
+      '<figure><div><iframe src="https://example.com/embed/exampleID?gui=true&#x26;t=10&#x26;paused=true&#x26;muted=false" loading="lazy" allow="fullscreen"></iframe></div></figure>',
   },
   {
     name: 'Single Site with Caption',
@@ -85,7 +85,7 @@ export default [
       ],
     },
     expected:
-      '<figure class="embed"><div><figure><iframe src="https://example.com/embed/exampleID"></iframe><figcaption>A title</figcaption></figure></div></figure>',
+      '<figure><div><figure><iframe src="https://example.com/embed/exampleID"></iframe><figcaption>A title</figcaption></figure></div></figure>',
   },
   {
     name: 'Single Site without Caption',
@@ -99,7 +99,7 @@ export default [
       ],
     },
     expected:
-      '<figure class="embed"><div><iframe src="https://example.com/embed/exampleID"></iframe></div></figure>',
+      '<figure><div><iframe src="https://example.com/embed/exampleID"></iframe></div></figure>',
   },
   {
     name: 'Multiple Sites with Captions',
@@ -120,7 +120,7 @@ export default [
       ],
     },
     expected:
-      '<figure class="embed"><div><figure><iframe src="https://example.com/embed/exampleID"></iframe><figcaption>Title 1</figcaption></figure><figure><iframe src="https://example.com/calculator/exampleID?embed="></iframe><figcaption>Title 2</figcaption></figure></div></figure>',
+      '<figure><div><figure><iframe src="https://example.com/embed/exampleID"></iframe><figcaption>Title 1</figcaption></figure><figure><iframe src="https://example.com/calculator/exampleID?embed="></iframe><figcaption>Title 2</figcaption></figure></div></figure>',
   },
   {
     name: 'Multiple Sites without Captions',
@@ -141,7 +141,7 @@ export default [
       ],
     },
     expected:
-      '<figure class="embed"><div><iframe src="https://example.com/embed/exampleID"></iframe><iframe src="https://example.com/calculator/exampleID?embed="></iframe></div></figure>',
+      '<figure><div><iframe src="https://example.com/embed/exampleID"></iframe><iframe src="https://example.com/calculator/exampleID?embed="></iframe></div></figure>',
   },
   {
     name: 'Multiple Sites with Shared Caption',
@@ -162,6 +162,21 @@ export default [
       ],
     },
     expected:
-      '<figure class="embed"><div><iframe src="https://example.com/embed/exampleID"></iframe><iframe src="https://example.com/calculator/exampleID?embed="></iframe></div><figcaption>This becomes the caption</figcaption></figure>',
+      '<figure><div><iframe src="https://example.com/embed/exampleID"></iframe><iframe src="https://example.com/calculator/exampleID?embed="></iframe></div><figcaption>This becomes the caption</figcaption></figure>',
+  },
+  {
+    name: 'className',
+    input: '[](https://example.com/watch?v=exampleID)',
+    options: {
+      className: 'embed',
+      sources: [
+        {
+          contentUrl: /^https:\/\/example\.com\/watch\?v=([a-zA-Z0-9_-]+)$/,
+          embedUrl: 'https://example.com/embed/${1}',
+        },
+      ],
+    },
+    expected:
+      '<figure class="embed"><div><iframe src="https://example.com/embed/exampleID"></iframe></div></figure>',
   },
 ]

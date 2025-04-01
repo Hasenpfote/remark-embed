@@ -21,12 +21,14 @@ interface Source {
 }
 
 interface Options {
+  className: string
   sources: Source[]
 }
 
 type UserOptions = DeepPartial<Options>
 
 const defaultOptions: Options = {
+  className: '',
   sources: [],
 }
 
@@ -149,7 +151,7 @@ const createFigureFromLinks = (
     data: {
       hName: 'figure',
       hProperties: {
-        class: ['embed'].filter(Boolean).join(' '),
+        ...(options.className ? { class: options.className } : {}),
       },
       hChildren: [
         h('div', {}, ...children),
