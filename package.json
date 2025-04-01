@@ -2,6 +2,10 @@
   "name": "remark-embed",
   "version": "0.1.0",
   "description": "My Library",
+  "exports": {
+    "import": "./dist/index.mjs",
+    "require": "./dist/index.js"
+  },
   "main": "dist/index.js",
   "module": "dist/index.mjs",
   "types": "dist/index.d.ts",
