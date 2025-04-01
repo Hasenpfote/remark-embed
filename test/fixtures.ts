@@ -75,7 +75,7 @@ export default [
   },
   {
     name: 'Single Site with Caption',
-    input: '[](https://example.com/watch?v=exampleID "An title")',
+    input: '[](https://example.com/watch?v=exampleID "A title")',
     options: {
       sources: [
         {
@@ -85,12 +85,26 @@ export default [
       ],
     },
     expected:
-      '<figure class="embed"><div><figure><iframe src="https://example.com/embed/exampleID"></iframe><figcaption>An title</figcaption></figure></div></figure>',
+      '<figure class="embed"><div><figure><iframe src="https://example.com/embed/exampleID"></iframe><figcaption>A title</figcaption></figure></div></figure>',
+  },
+  {
+    name: 'Single Site without Caption',
+    input: '[](https://example.com/watch?v=exampleID)',
+    options: {
+      sources: [
+        {
+          contentUrl: /^https:\/\/example\.com\/watch\?v=([a-zA-Z0-9_-]+)$/,
+          embedUrl: 'https://example.com/embed/${1}',
+        },
+      ],
+    },
+    expected:
+      '<figure class="embed"><div><iframe src="https://example.com/embed/exampleID"></iframe></div></figure>',
   },
   {
     name: 'Multiple Sites with Captions',
     input:
-      '[](https://example.com/watch?v=exampleID "Title 1")[](https://example.com/calculator/exampleID  "Title 2")',
+      '[](https://example.com/watch?v=exampleID "Title 1")[](https://example.com/calculator/exampleID "Title 2")',
     options: {
       sources: [
         {
@@ -109,9 +123,9 @@ export default [
       '<figure class="embed"><div><figure><iframe src="https://example.com/embed/exampleID"></iframe><figcaption>Title 1</figcaption></figure><figure><iframe src="https://example.com/calculator/exampleID?embed="></iframe><figcaption>Title 2</figcaption></figure></div></figure>',
   },
   {
-    name: 'Multiple Sites with Shared Caption',
+    name: 'Multiple Sites without Captions',
     input:
-      '[](https://example.com/watch?v=exampleID "Here becomes the caption")[](https://example.com/calculator/exampleID)',
+      '[](https://example.com/watch?v=exampleID)[](https://example.com/calculator/exampleID)',
     options: {
       sources: [
         {
@@ -127,6 +141,27 @@ export default [
       ],
     },
     expected:
-      '<figure class="embed"><div><iframe src="https://example.com/embed/exampleID"></iframe><iframe src="https://example.com/calculator/exampleID?embed="></iframe></div><figcaption>Here becomes the caption</figcaption></figure>',
+      '<figure class="embed"><div><iframe src="https://example.com/embed/exampleID"></iframe><iframe src="https://example.com/calculator/exampleID?embed="></iframe></div></figure>',
+  },
+  {
+    name: 'Multiple Sites with Shared Caption',
+    input:
+      '[](https://example.com/watch?v=exampleID "This becomes the caption")[](https://example.com/calculator/exampleID)',
+    options: {
+      sources: [
+        {
+          contentUrl: /^https:\/\/example\.com\/watch\?v=([a-zA-Z0-9_-]+)$/,
+          embedUrl: 'https://example.com/embed/${1}',
+        },
+        {
+          contentUrl: /^https:\/\/example.com\/calculator\/([a-zA-Z0-9]+)\/?/,
+          queryParams: {
+            embed: '',
+          },
+        },
+      ],
+    },
+    expected:
+      '<figure class="embed"><div><iframe src="https://example.com/embed/exampleID"></iframe><iframe src="https://example.com/calculator/exampleID?embed="></iframe></div><figcaption>This becomes the caption</figcaption></figure>',
   },
 ]
