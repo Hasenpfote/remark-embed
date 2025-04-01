@@ -148,7 +148,7 @@ const options = {
 }
 ```
 
-#### With Caption
+#### With Captions
 
 Markdown:
 
@@ -174,7 +174,7 @@ HTML:
 </figure>
 ```
 
-#### Without Caption
+#### Without Captions
 
 Markdown:
 
