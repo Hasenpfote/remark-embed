@@ -46,7 +46,7 @@
     "vitest": "^3.1.1"
   },
   "dependencies": {
-    "@fastify/deepmerge": "^3.0.0",
+    "@fastify/deepmerge": "^3.1.0",
     "hastscript": "^9.0.1",
     "unist-util-visit": "^5.0.0"
   }
