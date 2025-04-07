@@ -69,20 +69,7 @@ Running that yields:
 </figure>
 ```
 
-### Single Site
-
-Options:
-
-```typescript
-const options = {
-  sources: [
-    {
-      contentUrl: /^https:\/\/www\.youtube\.com\/watch\?v=([a-zA-Z0-9_-]+)$/,
-      embedUrl: 'https://www.youtube.com/embed/${1}',
-    },
-  ],
-}
-```
+### Single Embed
 
 #### With Caption
 
@@ -123,30 +110,9 @@ HTML:
 </figure>
 ```
 
-### Multiple Sites
+### Multiple Embeds
 
 When you include only links within a paragraph, they will be grouped together. Hard or soft breaks can also be used.
-
-Options:
-
-```typescript
-const options = {
-  sources: [
-    {
-      contentUrl: /^https:\/\/www\.youtube\.com\/watch\?v=([a-zA-Z0-9_-]+)$/,
-      embedUrl: 'https://www.youtube.com/embed/${1}',
-    },
-    {
-      contentUrl: /^https:\/\/www.bilibili.com\/video\/([a-zA-Z0-9]+)\/?/,
-      embedUrl: '//player.bilibili.com/player.html',
-      queryParams: {
-        bvid: '${1}',
-        p: 1,
-      },
-    },
-  ],
-}
-```
 
 #### With Captions
 
@@ -194,28 +160,7 @@ HTML:
 </figure>
 ```
 
-### Multiple Sites with Shared Caption
-
-When you include only links within a paragraph, they will be grouped together. Hard or soft breaks can also be used.
-
-Options:
-
-```typescript
-const options = {
-  sources: [
-    {
-      contentUrl: /^https:\/\/www\.youtube\.com\/watch\?v=([a-zA-Z0-9_-]+)$/,
-      embedUrl: 'https://www.youtube.com/embed/${1}',
-    },
-    {
-      contentUrl: /^https:\/\/www\.desmos\.com\/calculator\/(?:[a-zA-Z0-9]+)$/,
-      queryParams: {
-        embed: '',
-      },
-    },
-  ],
-}
-```
+#### With Shared Caption
 
 Markdown:
 
@@ -288,7 +233,7 @@ Below are configuration examples for embedding specific websites. For parameter 
 {
   sources: [
     {
-      contentUrl: /https:\/\/www.bilibili.com\/video\/([a-zA-Z0-9]+)\/?/,
+      contentUrl: /^https:\/\/www.bilibili.com\/video\/([a-zA-Z0-9]+)\/?$/,
       embedUrl: '//player.bilibili.com/player.html',
       queryParams: {
         poster: 1,
