@@ -1,6 +1,6 @@
-export default [
+const basicEmbedTests = [
   {
-    name: 'Combination: contentUrl + embedUrl',
+    name: 'Basic Embed (contentUrl, embedUrl)',
     input: '[](https://example.com/watch?v=exampleID)',
     options: {
       sources: [
@@ -14,7 +14,7 @@ export default [
       '<figure><div><iframe src="https://example.com/embed/exampleID"></iframe></div></figure>',
   },
   {
-    name: 'Combination: contentUrl + queryParams',
+    name: 'Basic Embed (contentUrl, queryParams)',
     input: '[](https://example.com/calculator/exampleID)',
     options: {
       sources: [
@@ -30,7 +30,7 @@ export default [
       '<figure><div><iframe src="https://example.com/calculator/exampleID?embed="></iframe></div></figure>',
   },
   {
-    name: 'Combination: contentUrl + embedUrl + queryParams',
+    name: 'Basic Embed (contentUrl, embedUrl, queryParams)',
     input: '[](https://example.com/video/exampleID)',
     options: {
       sources: [
@@ -50,7 +50,7 @@ export default [
       '<figure><div><iframe src="//player.example.com/player.html?poster=1&#x26;autoplay=0&#x26;bvid=exampleID&#x26;p=1"></iframe></div></figure>',
   },
   {
-    name: 'Combination: contentUrl + embedUrl + queryParams + iframeAttributes',
+    name: 'Basic Embed (contentUrl, embedUrl, queryParams, iframeAttributes)',
     input: '[](https://example.com/view/exampleID)',
     options: {
       sources: [
@@ -73,8 +73,11 @@ export default [
     expected:
       '<figure><div><iframe src="https://example.com/embed/exampleID?gui=true&#x26;t=10&#x26;paused=true&#x26;muted=false" loading="lazy" allow="fullscreen"></iframe></div></figure>',
   },
+]
+
+const singleEmbedTests = [
   {
-    name: 'Single Site with Caption',
+    name: 'Single Embed with Caption',
     input: '[](https://example.com/watch?v=exampleID "A title")',
     options: {
       sources: [
@@ -88,7 +91,7 @@ export default [
       '<figure><div><figure><iframe src="https://example.com/embed/exampleID"></iframe><figcaption>A title</figcaption></figure></div></figure>',
   },
   {
-    name: 'Single Site without Caption',
+    name: 'Single Embed without Caption',
     input: '[](https://example.com/watch?v=exampleID)',
     options: {
       sources: [
@@ -101,8 +104,11 @@ export default [
     expected:
       '<figure><div><iframe src="https://example.com/embed/exampleID"></iframe></div></figure>',
   },
+]
+
+const multipleEmbedsTests = [
   {
-    name: 'Multiple Sites with Captions',
+    name: 'Multiple Embeds with Captions',
     input:
       '[](https://example.com/watch?v=exampleID "Title 1")[](https://example.com/calculator/exampleID "Title 2")',
     options: {
@@ -123,7 +129,7 @@ export default [
       '<figure><div><figure><iframe src="https://example.com/embed/exampleID"></iframe><figcaption>Title 1</figcaption></figure><figure><iframe src="https://example.com/calculator/exampleID?embed="></iframe><figcaption>Title 2</figcaption></figure></div></figure>',
   },
   {
-    name: 'Multiple Sites without Captions',
+    name: 'Multiple Embeds without Captions',
     input:
       '[](https://example.com/watch?v=exampleID)[](https://example.com/calculator/exampleID)',
     options: {
@@ -144,7 +150,7 @@ export default [
       '<figure><div><iframe src="https://example.com/embed/exampleID"></iframe><iframe src="https://example.com/calculator/exampleID?embed="></iframe></div></figure>',
   },
   {
-    name: 'Multiple Sites with Shared Caption',
+    name: 'Multiple Embeds with Shared Caption',
     input:
       '[](https://example.com/watch?v=exampleID "This becomes the caption")[](https://example.com/calculator/exampleID)',
     options: {
@@ -164,6 +170,9 @@ export default [
     expected:
       '<figure><div><iframe src="https://example.com/embed/exampleID"></iframe><iframe src="https://example.com/calculator/exampleID?embed="></iframe></div><figcaption>This becomes the caption</figcaption></figure>',
   },
+]
+
+const attributesTests = [
   {
     name: 'className',
     input: '[](https://example.com/watch?v=exampleID)',
@@ -179,4 +188,11 @@ export default [
     expected:
       '<figure class="embed"><div><iframe src="https://example.com/embed/exampleID"></iframe></div></figure>',
   },
+]
+
+export default [
+  ...basicEmbedTests,
+  ...singleEmbedTests,
+  ...multipleEmbedsTests,
+  ...attributesTests,
 ]
